@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List!{% endblock %}
+
+{% block body %}
+<h1> List</h1>
+{% for message in app.flashes('messgae') %}
+<h3>{{message}}</h3>
+{% endfor %}
+<div>
+<a href="/post" ><h3>Create</h3></a>
+<br>
+<br>
+<table class="table">
+<thead>
+<tr> <td>Id </td>
+     <td>Nom</td>
+    <td>Prenom</td>
+    <td>Actions</td>
+</tr>
+</thead>
+<tbody>
+{% for i in posts %}
+  <tr>
+  <td> {{i.Id}}</td>
+  <td> {{i.nom}}</td>
+     <td> {{i.prenom}}</td>
+     <td>
+     <a href="{{path('app_edit',{id:i.id})}}" class="btn btn-success">Edit </a>||
+      <a href="{{path('app_delete',{id:i.id})}}" class="btn btn-success">Delete </a>
+     </td>
+   
+   </tr>
+{% endfor %}
+    </tbody>
+</table>
+ </div>
+</div>
+
+{% endblock %}
